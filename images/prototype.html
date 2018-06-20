@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Website Layout</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+.container {
+widht: 80%;
+margin: 0 auto;
+}
+
+.header.container {
+height: 400px;
+width: 100%;
+position: relative;
+background-image:url("1.jpg");
+background-repeat:repeat;
+}
+
+li {
+font-size: 24px
+}
+
+.container.main-content {
+flex: 2;
+display: flex;
+justify-content: center;
+height: 720px;
+background:#F7F5F5;
+}
+
+.main-content.left {
+flex-basis: 70%;
+
+flex-direction: column;
+display: flex;
+}
+
+.main-content.right {
+border-style: solid;
+background: lightblue;
+flex-basis: 30%;
+}
+
+.inner-heading {
+height: 10px;
+}
+
+.row-one {
+height: 350px;
+
+}
+
+.news {
+display: flex;
+height: 100px;
+}
+
+.newsContent {
+font-family:Trebuchet MS;
+flex: 2;
+width: 360px;
+}
+
+.newsContentDate {
+font-color:#D3D3D3;
+flex: 0.5;
+font-size:35px;
+}
+
+.newsContentMonth {
+flex: 1.5;
+font-size:10px;
+
+}
+
+.newsContentImage {
+flex: 0.5;
+width: 190px;
+height: 75px;
+}
+
+
+.row-two {
+height: 240px;
+flex: 2;
+display: flex;
+justify-content: center;
+}
+
+.library-left {
+flex-basis: 50%;
+justify-content: center;
+display: flex;
+flex: 2;
+}
+
+.library-right {
+flex-basis: 50%;
+justify-content: center;
+display: flex;
+flex-direction: column;
+}
+
+.library-content-up {
+height: 120px;
+}
+
+.library-content-bottom {
+display: flex;
+}
+
+.library-content-bottom-one {
+height: 120px;
+flex: 1;
+}
+
+.row-three {
+height: 240px;
+background: #bbb;
+display: flex;
+}
+
+.story {
+flex: 1;
+flex-basis: 50%;
+flex-direction: column;
+display: flex;
+font-size: 20px;
+}
+
+.story-child {
+height: 80px;
+}
+
+footer {
+padding: 1em;
+color: black;
+background-color:;
+clear: left;
+text-align: center;
+}
+
+.inner-heading {
+font-size: 20px;
+}
+
+.navigation {
+margin-left: 40px;
+font-size: 15px;
+}
+
+.menu {
+padding: 20px;
+}
+
+.login-signup {
+display: inline-block;
+  height: 50px; /*sets height of element*/
+  background: #D3D3D3; /*sets the background of this element (here a solid colour)*/
+  transition: all 0.6s; /*sets a transition (for hover effect)*/ 
+  padding-left: 20px; /*sets 'padding'*/
+  padding-right: 20px; /*sets 'padding'*/
+  line-height: 50px; /*for this, it sets vertical alignment*/
+  border-radius: 40px;
+  margin-left: 100px;
+}
+
+
+.discover {
+display: inline-block;
+  height: 50px; /*sets height of element*/
+  background: #A9A9A9	; /*sets the background of this element (here a solid colour)*/
+  padding-left: 20px; /*sets 'padding'*/
+  padding-right: 20px; /*sets 'padding'*/
+  line-height: 50px; /*for this, it sets vertical alignment*/
+ 
+  margin-right:100px;
+
+}
+
+.headerText{
+margin-top:100px;
+}
+.circle{
+height:10px;
+}
+
+.what-new{
+font-family:cursive;
+font-size:x-large;
+}
+.dateRoundOne{
+height:5px;
+width:40px;
+margin-top: 15px;
+}
+
+.dateRoundTwo{
+height:5px;
+width:40px;
+margin-top: 25px;
+}
+
+.dateRoundThree{
+height:5px;
+width:40px;
+margin-top: 25px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div  class="container header">
+<div class="circle"><svg height="100" width="100"><circle cx="30" cy="30" r="20" stroke="white" stroke-width="6" fill="lightgrey" /></svg></div>
+<nav class="navigation">
+<a class="menu" href="#">Joomla Hub</a> <a class="menu" href="#">/</a>
+<a class="menu" href="#">what's new</a> <a class="menu" href="#">library</a>
+<a class="menu" href="#">giveaways</a> <a class="menu" href="#">funcorners</a>
+<a class="menu" href="#">story</a> 
+<a class="login-signup" >Login</a>
+<a class="login-signup" >SignUp</a>
+</nav>
+<div class="headerText"><h3>Mg Shadow Computer <br>
+Monitoring Software A <br>
+Watchdog Protecting Your <br>
+Interests</h3></div>
+<br><br>
+
+<a class="discover">Discover</a>
+</div>
+
+<div class="container main-content">
+<div class="container  main-content left">
+<div class="row-one">
+<div class="what-new">What's news ?</div><br>
+<div class="news">
+<div class="dateRoundOne"><svg height="100" width="100"><circle cx="15" cy="15" r="10" stroke="lightgrey" stroke-width="4" fill="white" /></svg></div>
+<div class="newsContentDate">23 <br>
+<div class="newsContentMonth">MARCH</div></div>
+<div class="newsContent"><h4>Cheap Airline tickets great way to save</h4>
+<div>Vegetables are essential to human diet.We get a great deal of our daily vitamin content from vegetables.</div>
+</div>
+<div class="newsContentImage"><img src="airline.jpg"></div>
+</div>
+<div class="news">
+<div class="dateRoundTwo"><svg height="100" width="100"><circle cx="15" cy="15" r="10" stroke="lightgrey" stroke-width="4" fill="white" /></svg></div>
+<div class="newsContentDate">23 <br>
+<div class="newsContentMonth">MARCH</div></div>
+<div class="newsContent"><h4>Going wireless with headphones</h4>
+<div>Vegetables are essential to human diet.We get a great deal of our daily vitamin content from vegetables.</div>
+</div>
+<div class="newsContentImage"><img src="headphones.jpg"></div>
+</div>
+
+<div class="news">
+<div class="dateRoundThree"><svg height="100" width="100"><circle cx="15" cy="15" r="10" stroke="lightgrey" stroke-width="4" fill="white" /></svg></div>
+<div class="newsContentDate">23 <br>
+<div class="newsContentMonth">MARCH</div></div>
+<div class="newsContent"><h4>Party jokes startling but unnecessary</h4>
+<div>Vegetables are essential to human diet.We get a great deal of our daily vitamin content from vegetables.</div>
+</div>
+<div class="newsContentImage"><img src="party.jpg"></div>
+</div>
+
+</div>
+<div class="inner-heading">Joomla Library</div>
+<div class="row-two">
+
+<div class="library-left">
+library-left <span class="glyphicon">&#xe234;</span>
+</div>
+<div class="library-right">
+<div class="library-content-up">library-content-one</div>
+<div class="library-content-bottom">
+<div class="library-content-bottom-one">Compare prices find
+best computer accessory</div>
+<div class="library-content-bottom-one">Can you get free
+games for your i-phones</div>
+</div>
+</div>
+</div>
+<div class="row-three">
+<div class="story">
+Giveaways
+<div class="story-child">Giveaways 1</div>
+<div class="story-child">Giveaways 2</div>
+<div class="story-child">Giveaways 3</div>
+</div>
+<div class="story">
+Joomla Story
+<div class="story-child">Joomla Story 1</div>
+<div class="story-child">Joomla Story 2</div>
+<div class="story-child">Joomla Story 3</div>
+</div>
+</div>
+</div>
+<div class="container  main-content right">Header2</div>
+</div>
+<footer>
+<div style="font-size: 3em; color: Tomato">
+<i class="fas fa-camera-retro"></i>
+</div>
+Copyright &copy; Susbcribe To Our News letter
+</footer>
+</div>
+
+</body>
+</html>

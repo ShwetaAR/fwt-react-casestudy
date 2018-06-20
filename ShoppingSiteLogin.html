@@ -1,0 +1,233 @@
+        <html>
+        <head>
+        <title>Login Page</title>
+          <meta charset="UTF-8">
+          <link rel="stylesheet" href="css/style.css">
+          <script type="text/javascript" src="lib/react.js"></script>
+        	<script type="text/javascript" src="lib/react-dom.js"></script>
+        	<script type="text/javascript" src="lib/babel.min.js"></script>
+
+       <script type="text/babel">
+       class Login extends React.Component{
+
+              constructor(){
+              super();
+              this.state={
+              username:'',password:''
+            }
+              this.onChangeSetUserName = this.onChangeSetUserName.bind(this);
+          }
+
+              onChangeSetUserName(event){
+                  this.setState({
+                  username: event.target.value
+                });
+
+
+            }
+
+              render(){
+                return(
+                    <div className="wrap">
+                        <p className="form-title">
+                            LogIn Form</p>
+                        <div className="login">
+                        <input type="text" placeholder="Username" value={this.state.username} onChange={this.onChangeSetUserName}></input>
+                        <input type="password" placeholder="Password"  ></input>
+                        <button  onClick={(event) => this.loginUser(event)}>Login</button>
+
+                        </div>
+                    </div>
+
+                );
+                }
+
+              loginUser(){
+                    ReactDOM.render(<ShoppingCart/>, document.getElementById("login-content"));
+                   ReactDOM.render(<Welcome username={`WELCOME:   ` + this.state.username} />, document.getElementById("welcome"));
+                   ReactDOM.render(<Logout/>, document.getElementById("logout"));
+            }
+
+        }
+
+        class Logout extends React.Component{
+               logout(){
+                        ReactDOM.render(<Welcome />, document.getElementById("welcome"));
+                        ReactDOM.render(<Login/>, document.getElementById("login-content"));
+                  }
+
+              render(){
+                  return(
+                     <button onClick={this.logout.bind(this)}>Logout</button>
+                  );
+            }
+        }
+
+        class Welcome extends React.Component{
+
+              render(){
+                  return(
+                     <div className="username">{this.props.username} </div>
+                  );
+            }
+        }
+        
+        class ShoppingCart extends React.Component{
+            constructor(){
+              super();
+              this.state={
+              products: [
+              {"id": 1, "title": "iPad 4 Mini", "price": 500.01, "inventory": 2},
+              {"id": 2, "title": "H&M T-Shirt White", "price": 10.99, "inventory": 10},
+              {"id": 3, "title": "Charli XCX - Sucker CD", "price": 19.99, "inventory": 5}
+              ],
+                  ProductsInCart: []
+            };
+
+            }
+
+            getProductBasedOnId(id) {
+                  for (var i = 0; i < this.state.products.length; i++) {
+                      if(this.state.products[i].id == id){
+                        this.state.ProductsInCart.push(this.state.products[i]);
+                        this.setState({
+                        ProductsInCart: this.state.ProductsInCart
+                      });
+                      }
+                  }
+            }
+             render() {
+             const book = this.props.book;
+             return (<div>
+                     <div className="shopping-cart">
+                          <div className="title">
+                          Shopping Bag
+                          </div>
+                         <div className="item"> {this.state.products.map((item, index) => (
+                          <ShoppingProducts 
+                          key={item.id.toString()}
+                          title={item.title} 
+                          price={`Rs. ` + item.price + `/- only`}
+                          inventory={item.inventory}
+                          getProductBasedOnId={(id) => { this.getProductBasedOnId(item.id); }}
+                   />
+                ))}
+                         </div>
+                      </div>
+
+
+                      <div className="cart-content">
+                          <div className="title">
+                          Cart Item
+                          </div>
+                         <div className="item"> {this.state.ProductsInCart.map((item, index) => (
+                          <ProductsToCart 
+                          key={item.id.toString()}
+                          title={item.title} 
+                          price={`Rs. ` + item.price + `/- only`}
+                          inventory={item.inventory}
+                          
+                   />
+                ))}
+                         </div>
+                      </div>
+                    </div>
+                       
+
+        );
+      }
+
+       
+      }
+
+
+        class ShoppingProducts extends React.Component{
+              render() {
+                 return(
+                        <div>
+                        <div className="buttons">
+                            <span className="delete-btn"></span>
+                            <span className="like-btn"></span>
+                        </div>
+                        <div className="image">
+                            <img src="./images/headphones.jpg" alt=""/>
+                        </div>
+                       
+                        <div className="description">
+                            <span>{this.props.title}</span>
+                            <span>{this.props.inventory}</span>
+                        </div>
+                        <div  >{this.props.price}</div>
+                        <button onClick={this.props.getProductBasedOnId} className="cart-button" >ADD TO CART</button>
+                        
+                      </div>
+                             
+                  );
+                }
+
+                addTocart(){
+                ReactDOM.render(<ProductsToCart/>, document.getElementById("cart-content"));
+              }
+
+        }
+
+
+       class ProductsToCart extends React.Component{
+
+                render(){
+                    return(
+                       <div>
+                        <div className="buttons">
+                            <span className="delete-btn"></span>
+                            <span className="like-btn"></span>
+                        </div>
+                        <div className="image">
+                            <img src="./images/headphones.jpg" alt=""/>
+                        </div>
+                       
+                        <div className="description">
+                            <span>{this.props.title}</span>
+                            <span>{this.props.inventory}</span>
+                        </div>
+                        <div  >{this.props.price}</div>
+                        <button className="cart-button">BUY</button>
+                        
+                      </div>
+
+                    );
+              }
+     }
+   
+          function loginForm(){
+           ReactDOM.render(<Login/>, document.getElementById("login-content"));
+
+           }
+
+        </script>
+        </head>
+        <body onload="loginForm()">
+
+        <header>
+          <h3>GET EARLY ACCESS AND SHOP NOW</h3>
+          <div id="welcome"></div>
+          <div id="logout"></div>
+       
+        </header>
+
+        <section>
+          
+          <article>
+            <div class="content-flex">
+              <div id="login-content" class="tab-content"></div>
+              <div id="cart-content" ></div>
+              
+            </div>
+              </article> 
+
+        </section>
+
+        <footer>
+          <p>Footer</p>
+        </footer>
+        </body>
+        </html>
