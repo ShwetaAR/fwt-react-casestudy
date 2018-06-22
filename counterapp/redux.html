@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title></title>
+</head>
+<script>
+function reducer(state,action){
+	var _state = state;
+	if(action.type==='INCREMENT'){
+		_state++;
+	}
+
+	if(action.type==='DECREMENT'){
+		_state--;
+	}
+	return _state;
+}
+
+function createStore(_reducer){
+  var state =0;
+  var _listener= [];
+
+  function getState(){
+  	return state;
+  }
+  function dispatch(action) {
+  	state = _reducer(state,action);
+  	_listener.forEach(function(listener){
+  		listener();
+  	});
+
+  }
+
+  function subscribe(listener){
+  	_listener.push(listener);
+  }
+
+  return {
+  		dispatch,
+  		getState,
+  		subscribe
+  }
+
+};
+ var store = createStore(reducer);
+
+ store.subscribe(showCounter);
+
+ function increment(){
+ 	 store.dispatch({
+ 	 	type: 'INCREMENT'
+ 	 });
+ 	 showCounter();
+ }
+
+  function decrement(){
+ 	 store.dispatch({
+ 	 	type: 'DECREMENT'
+ 	 });
+ 	 showCounter();
+ }
+ 
+
+ function showCounter(){
+ 	
+ 	document.getElementById('counter').innerHTML = store.getState();
+ }
+
+</script>
+<body>
+ <button onclick="increment()" > INCREMENT</button>
+<button onclick="decrement()" >DECREMENT</button> 
+<div id="counter"></div>
+
+</body>
+</html>
